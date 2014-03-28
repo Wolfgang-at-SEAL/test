@@ -21,16 +21,18 @@ if (argv.name){
   testname = argv.name;
   console.log ('Test name set to: "' + testname + '"');
 }
+
 var client = 'c:/seal/dpfclient.exe';
-var file = 'c:/seal/test/testfiles/original.doc';
-var testdir = 'c:/seal/test/testfiles/';
-var targetfile = 'original';
+var file;
+var testdir = __dirname + '/testfiles/';
+
 var duration = 60 * 1000;
 if (argv.duration){
   duration = argv.duration;
   console.log ('Test duration set to: ' + duration);
   duration = duration * 1000;
 }
+
 var nedb = require('nedb');
 var db = new nedb({ filename: __dirname + '/testresult.db', autoload: true });
 var start;
@@ -64,10 +66,10 @@ function saveResult(data, callback) {
 }
 
 function callDpfclient (file) {
-  console.time('client start');
+  console.time('client duration');
   var args = ['-wf', 'dpf4convert.netconvertoffice', 
                 //'-s', 'TARGETFILE=' + file,
-		'-s', 'TARGETDIR=c:/seal/test/output',
+		'-s', 'TARGETDIR=' + __dirname + '/output',
 		'-f', file
 		];
   var now = Date.now();
@@ -80,13 +82,13 @@ function callDpfclient (file) {
   child = execFile(client,args,options,
   function (error, stdout, stderr) {
     console.log('stdout: ' + stdout);
-    console.log('stderr: ' + stderr);
+    //console.log('stderr: ' + stderr);
     if (error !== null) {
       console.log('exec error: ' + error);
     }
   var end = Date.now();         
   var elapsed = end - now;
-  console.timeEnd('client start');
+  console.timeEnd('client duration');
   saveResult({'file': file,
 	      'start': now,
               'end': end,         
