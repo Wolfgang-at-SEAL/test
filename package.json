@@ -1,0 +1,20 @@
+{
+  "name": "dpftest",
+  "version": "0.0.1",
+  "description": "Call configurable number of dpfclients parallel and save statistic information for each call in database",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "DPF",
+    "Test"
+  ],
+  "author": "wl",
+  "license": "ISC",
+  "dependencies": {
+    "nedb": "^0.10.4",
+    "nimble": "0.0.2",
+    "minimist": "0.0.8"
+  }
+}
