@@ -13,10 +13,10 @@
   "author": "wl",
   "license": "ISC",
   "dependencies": {
-    "nedb": "0.10.4",
-    "nimble": "0.0.2",
-    "minimist": "0.0.8",
-    "msexcel-builder": "0.0.2",
-    "moment": "2.5.1"
+    "nedb": "^0.10.4",
+    "nimble": "^0.0.2",
+    "minimist": "^0.0.8",
+    "msexcel-builder": "^0.0.2",
+    "moment": "^2.5.1"
   }
 }
